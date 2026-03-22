@@ -1,17 +1,17 @@
-import refs from "./refs"
-    
+import refs from './refs';
+
 function renderCategory(category) {
   return `
     <li class="categories__item">
-      <button class="categories__btn" type="button">${category}</button>
+      <button class="categories__btn ${category === 'All' ? 'categories__btn--active' : ''}" type="button">${category}</button>
     </li>
- `
+ `;
 }
 
 function renderCategories(categories) {
-    const markup = categories.map(renderCategory).join('')
-    refs.categories.innerHTML = markup;
-};
+  const markup = categories.map(renderCategory).join('');
+  refs.categories.innerHTML = markup;
+}
 
 function renderProduct(product) {
   return `
@@ -22,14 +22,13 @@ function renderProduct(product) {
       <p class="products__category">Category: ${product.category}</p>
       <p class="products__price">Price:  ${product.price}$</p>
     </li>
-  `
+  `;
 }
 
 function renderProducts(products) {
-    const markup = products.map(renderProduct).join('')
-    refs.products.insertAdjacentHTML('beforeend', markup);
-};
-
+  const markup = products.map(renderProduct).join('');
+  refs.products.insertAdjacentHTML('beforeend', markup);
+}
 
 // краще в кінці
 export { renderCategory, renderCategories, renderProduct, renderProducts };
